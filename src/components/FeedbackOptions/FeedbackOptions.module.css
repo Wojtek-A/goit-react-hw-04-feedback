@@ -6,4 +6,5 @@
   border: solid 1px gray;
   border-radius: 5px;
   text-transform: capitalize;
+  cursor: pointer;
 }
