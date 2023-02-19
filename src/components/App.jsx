@@ -9,17 +9,12 @@ export const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const countTotalFeedback = () => {
-    return bad + good + neutral;
-  };
+  const countTotalFeedback = bad + good + neutral;
 
-  const countPositivePercentage = () => {
-    return Math.round((good / countTotalFeedback()) * 100);
-  };
+  const countPositivePercentage = Math.round((good / countTotalFeedback) * 100);
 
   const increaseFeedback = event => {
     const name = event.target.name;
-    console.log(name, typeof name);
     if (name === 'bad') {
       setBad(bad + 1);
     }
@@ -37,15 +32,15 @@ export const App = () => {
           onLeaveFeedback={increaseFeedback}
         />
         <h2>Statistics</h2>
-        {countTotalFeedback() === 0 ? (
+        {countTotalFeedback === 0 ? (
           <Notification message="There is no feedback" />
         ) : (
           <Statistics
             good={good}
             bad={bad}
             neutral={neutral}
-            total={countTotalFeedback()}
-            positivePercentage={countPositivePercentage()}
+            total={countTotalFeedback}
+            positivePercentage={countPositivePercentage}
           />
         )}
       </Section>
